@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Pets</title>
+</head>
+<body>
+
+<h2>All Pets</h2>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Breed</th>
+        <th>Category</th>
+        <th>Image</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pet : ${pets}">
+        <td th:text="${pet.id}"></td>
+        <td th:text="${pet.name}"></td>
+        <td th:text="${pet.description}"></td>
+        <td th:text="${pet.breed}"></td>
+        <td th:text="${pet.category}"></td>
+        <td>
+            <img th:src="@{/pets/display/{id}(id=${pet.id})}" alt="Pet Image" width="50" height="50"/>
+        </td>
+        <td>
+            <a th:href="@{/pets/edit/{id}(id=${pet.id})}">Edit</a>
+            |
+            <a th:href="@{/pets/delete/{id}(id=${pet.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+
+<a th:href="@{/pets/add}">Add New Pet</a>
+
+</body>
+</html>

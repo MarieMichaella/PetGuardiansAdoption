@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dogs List</title>
+    <style>
+        .dog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    margin-top:-200px;
+}
+
+        .dog-card {
+            position: relative;
+            margin:0 auto;
+            width: 30%;
+            margin: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: center;
+            max-width: 336px;
+            height: 310px;
+                background: #FFFFFF;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+        }
+
+        .dog-image {
+            margin: 0 auto;
+            width: 100%;
+            height: 100%;
+            max-width: 200px;
+            max-height: 150px;
+
+        }
+
+        .dog-card p {
+            position: inherit;
+            display: flex;
+            top:50px;
+        }
+
+        .dog-card a {
+            position: inherit;
+                margin-left: 180px;
+                top:0px;
+                padding: 8px 12px;
+                border: 3px solid #6F4E37;
+                background-color: transparent;
+                border-radius: 8px;
+                cursor: pointer;
+                color:#6F4E37;
+                text-decoration: none;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Dogs List</h1>
+
+<div class="dog-container">
+    <div th:each="dog : ${dogs}" class="dog-card">
+        <img th:src="@{/display/{id}(id=${dog.id})}" alt="Dog Image" class="dog-image" />
+        <p>Name: <span th:text="${dog.name}"></span></p>
+        <p>Breed: <span th:text="${dog.breed}"></span></p>
+        <a th:href="@{/details/{id}(id=${dog.id})}">Details</a>
+    </div>
+</div>
+
+</body>
+</html>

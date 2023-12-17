@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Pet Conservation</title>
+</head>
+<body>
+
+<h2>Edit Pet Conservation</h2>
+
+<form th:action="@{'/petConservations/editpetconservation/' + ${petConservation.id}}" th:object="${petConservation}" method="post" enctype="multipart/form-data">
+    <input type="hidden" th:field="*{id}"/>
+
+    <label>Blog Name:</label>
+    <input type="text" th:field="*{blogName}" required/><br/>
+
+    <label>Blog Picture:</label>
+    <input type="file" name="image" accept="image/*" required/><br/>
+
+    <label>Blog Description:</label>
+    <textarea th:field="*{blogDescription}" required></textarea><br/>
+
+    <button type="submit">Update</button>
+</form>
+
+<br/>
+
+<a href="/allpetconservations">Back to All Pet Conservations</a>
+
+</body>
+</html>

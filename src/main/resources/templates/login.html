@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
+</head>
+<style>body {
+    background-color: #f6f6f6;
+}
+
+.login-box {
+    position: relative;
+    margin: 0 auto;
+    top:100px;
+    width:1000px;
+    height: 600px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rect-1 {
+    position: inherit;
+    width:500px;
+    height:600px;
+    background-color: #f6f6f6;
+    border-radius: 20px 0 0 20px;
+}
+
+.rect-1 img {
+    position: absolute;
+    left:70px;
+    top:50px;
+    width:350px;
+    height: 500px;
+}
+
+.rect-1 h1{
+    position: inherit;
+    font-family: 'Montserrat';
+    font-size: 50px;
+    text-align: center;
+    top: 50px;
+}
+
+.login-inputs {
+    position: relative;
+    top:-440px;
+    left:530px;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    margin-top:20px;
+    margin-left:60px;
+}
+
+label {
+    margin-top: 10px;
+    font-weight: 700;
+    color: #6F4E37;
+}
+
+input, textarea {
+    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+input{
+    margin-top: 5px;
+    padding: 10px;
+    background-color: #f6f6f6;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+button{
+    margin-top: 5px;
+    padding: 10px;
+    margin: 0 auto;
+    width:100px;
+    background-color: #f6f6f6;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    background-color: #6F4E37;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #53392A;
+}</style>
+<body>
+<section class="login">
+    <div class="login-box">
+        <div class="rect-1">
+
+            <img class="home-image" src="image 2.png">
+
+        </div>
+
+        <div class="login-inputs">
+            <form th:action="@{/login}" method="POST"  class="form">
+
+                <!--    <h3 th:text="Login"></h3>-->
+                <label for="chk" aria-hidden="true" style="color:darkslateblue">Log in</label>
+                <input type="text" name="email" class="input" th:placeholder="Email" /> <br /><br />
+                <input type="password" th:placeholder="Password" class="input"  name="password" />
+                <button type="Submit" th:text="Login"></button>  <button><a th:href="@{|/register|}" th:text="'Register'" style="color: white; width: 30%"></a></button>
+
+            </form>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

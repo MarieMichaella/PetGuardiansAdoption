@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Adoption Interest Form</title>
+</head>
+<style>
+    form {
+        display: flex;
+        margin: 0 auto;
+        flex-direction: column;
+        max-width: 570px;
+    }
+
+    label {
+        margin-top: 10px;
+        font-weight: 700;
+        color: #6F4E37;
+    }
+
+    input, button {
+        margin-top: 5px;
+        padding: 15px;
+        width:250px;
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        margin-bottom: 10px;
+    }
+
+    textarea {
+        margin-top: 5px;
+        padding: 25px;
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        margin-bottom: 10px;
+    }
+
+
+    textarea {
+        resize: vertical;
+    }
+
+    button {
+        background-color: transparent;
+        border-color: #6F4E37;
+        color: #6F4E37;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #53392A;
+    }</style>
+<body>
+
+<h1>Adoption Interest Form</h1>
+
+<form th:action="@{/send-interest}" method="post" th:object="${adoptionInterest}">
+    <label for="name">Pet Name:</label>
+    <input type="text" id="name" th:field="*{name}" required/><br/>
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" id="phoneNumber" name="phoneNumber" required/><br/>
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" rows="4" required></textarea><br/>
+
+    <input type="submit" value="Send Interest"/>
+</form>
+
+</body>
+
+</html>

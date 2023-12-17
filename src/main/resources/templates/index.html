@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Guardians</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
+</head>
+
+<style>
+    .home-image {
+    position: absolute;
+width: 494px;
+height: 741px;
+left: 45px;
+top: 90px;
+z-index: 1;
+}
+
+nav {
+    position: relative;
+    display: flex;
+    left: 900px;
+    top: 30px;
+    width:500px;
+
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-right: 30px;
+    font-family: 'Inter';
+    width: 68px;
+    height: 18px;
+    left: 1156px;
+    top: 66px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+
+#login {
+    margin-top: -10px;
+    width: 130px;
+height: 30px;
+padding-top: 10px;
+color: #fff;
+background: #6F4E37;
+border-radius: 7px;
+}
+
+.brand {
+    display: flex;
+    margin-left:15px;
+    margin-top: -70px;
+}
+
+.name {
+width: 263px;
+height: 45px;
+left: 0px;
+top: 27.53px;
+margin-right: -190px;
+
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 39.383px;
+
+
+}
+
+#name1 {
+color:#6F4E37;
+}
+
+.main-words {
+
+position: absolute;
+width: 721px;
+height: 192px;
+left: 772px;
+top: 200px;
+
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: light;
+font-size: 60px;
+line-height: 95.6%;
+
+color: #6F4E37;
+letter-spacing: 6px;
+
+}
+
+.min-words {
+
+position: absolute;
+width: 666px;
+height: 163px;
+left: 766px;
+top: 429px;
+
+/* font-family: 'Montserrat'; */
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+
+color: #000000;
+
+
+
+}
+
+.stars{
+
+
+position: absolute;
+top:310px;
+right:170px;
+
+
+}
+
+.ellipse1 {
+    position: absolute;
+    width: 440px;
+    height: 440px;
+    left: 65px;
+    top: 150px;
+    background: #6F4E37;
+    border-radius: 50%;
+}
+
+.box {
+
+position: absolute;
+width: 283px;
+height: 67px;
+left: 314px;
+top: 430px;
+z-index:2;
+background: #FFFFFF;
+box-shadow: 0px 28px 38px rgba(29, 27, 19, 0.09), 0px 3.50603px 4.75819px rgba(29, 27, 19, 0.045);
+border-radius: 10px;
+
+}
+
+.box2 {
+
+    position: absolute;
+    width: 283px;
+    height: 67px;
+    left: 114px;
+    top: 585px;
+    z-index:2;
+    background: #FFFFFF;
+    box-shadow: 0px 28px 38px rgba(29, 27, 19, 0.09), 0px 3.50603px 4.75819px rgba(29, 27, 19, 0.045);
+    border-radius: 10px;
+
+    }
+
+.box-words{
+
+
+position: absolute;
+width: 261px;
+height: 48px;
+left: 44px;
+margin: 10px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-size: 25px;
+line-height: 48px;
+
+
+color: #000000;
+
+
+}
+
+.about-img {
+position: relative;
+width: 1500px;
+height: 881px;
+left: 0px;
+top: 780px;
+
+}
+
+.about {
+    position: absolute;
+    display: flex;
+    margin-left:85px;
+    margin-top: -40px;
+    letter-spacing: 6px;
+}
+
+.abt-name {
+
+width: 263px;
+height: 45px;
+left: 0px;
+top: 27.53px;
+margin-right: -130px;
+
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 60px;
+
+}
+
+#abt-name1 {
+color:#6F4E37;
+}
+
+.long-words {
+    position: absolute;
+    margin-top:140px;
+    z-index:1;
+    margin-left:85px;
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+
+color: #000000;
+
+
+}
+
+.stars2{
+
+
+    position: absolute;
+    top:960px;
+    left:470px;
+    z-index:2;
+    width:40px;
+    height: 40px;
+
+    }
+
+.service {
+position: absolute;
+width: 696px;
+height: 76px;
+left: 584px;
+top: 0px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 60px;
+line-height: 95.6%;
+letter-spacing: 6px;
+
+
+color: #272727;
+
+
+}
+
+.three {
+    position:relative;
+    background: #FFF9F4;
+    top: 900px;
+    z-index: 1;
+    width:100%;
+    height:600px;
+}
+
+
+.ellipse2 {
+    position: absolute;
+    top: 268px;
+    left: 55%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.ellipse21,
+.ellipse22,
+.ellipse23 {
+    margin-right: 190px;
+    width: 164.39px;
+    height: 164.39px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    box-shadow: 0px 3.25517px 65.1034px rgba(0, 0, 0, 0.07),
+                0px 1.18819px 23.7638px rgba(0, 0, 0, 0.0482987),
+                0px 0.576845px 11.5369px rgba(0, 0, 0, 0.0389404),
+                0px 0.28278px 5.6556px rgba(0, 0, 0, 0.0310596),
+                0px 0.111812px 2.23623px rgba(0, 0, 0, 0.0217013);
+}
+
+
+.ellipse2 img {
+margin: 0 auto;
+}
+
+.ellipse21 img,
+.ellipse22 img,
+.ellipse23 img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    margin-top:30px;
+}
+
+.about-words {
+    position: absolute;
+    display: flex;
+    font-family: 'Montserrat';
+    top:450px;
+    font-size: 25px;
+    left:150px;
+}
+
+.about-words p {
+    margin-left: 150px;
+
+}
+
+.category {
+    position: absolute;
+    width: 696px;
+    height: 76px;
+    left: 484px;
+    top: 2600px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 95.6%;
+    letter-spacing: 6px;
+    color: #272727;
+
+}
+
+
+.ellipse3 {
+    position: absolute;
+    top: 268px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    top:2890px;
+}
+
+.ellipse3 img {
+    position: absolute;
+    height: auto;
+    width:250px;
+    top:-60px;
+    margin-right:80px;
+    margin-left:20px;
+}
+
+
+.ellipse32,
+.ellipse33 {
+    flex: 1;
+    margin: 0 30px;
+    width: 336px;
+    height: 310px;
+    left: 101px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.ellipse31
+{
+    flex: 1;
+    margin: 0 30px;
+    width: 336px;
+    height: 310px;
+    left: 101px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.abt-read {
+
+box-sizing: border-box;
+display: flex;
+padding: 12px 24px;
+gap: 10px;
+width: 125px;
+height: 44px;
+margin-left:180px;
+margin-top: 260px;
+
+border: 3px solid #6F4E37;
+border-radius: 8px;
+
+
+}
+
+.cat-words {
+    position: absolute;
+    top:3140px;
+    display: flex;
+    left:250px;
+    font-family: Montserrat;
+    font-size:20px;
+    width:40px;
+
+}
+
+.cat-words p {
+    margin-right:340px;
+}
+
+.conservation {
+position: relative;
+width: 696px;
+height: 76px;
+left: 85px;
+top:150px;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 60px;
+line-height: 95.6%;
+letter-spacing: 6px;
+color: #272727;
+
+}
+
+.five {
+    position: relative;
+    top: 1900px;
+    background-color: #f6f6f6;
+    height:700px;
+
+}
+
+.cons-words{
+    position: inherit;
+    font-family: 'Montserrat';
+    font-size: 30px;
+    top:200px;
+    left: 85px;
+    letter-spacing: 6px;
+    width:700px;
+}
+
+.pet-cons {
+    position: absolute;
+    top:20px;
+    width:555px;
+    height:659px;
+    right:40px;
+}
+
+.abt-cons {
+box-sizing: border-box;
+display: flex;
+padding: 12px 24px;
+gap: 10px;
+width: 125px;
+height: 44px;
+margin-left:480px;
+margin-top: 300px;
+
+border: 3px solid #6F4E37;
+border-radius: 8px;
+}
+
+.contact {
+    position: relative;
+    font-family: 'Montserrat';
+    font-size: 30px;
+    top:2000px;
+    left: 85px;
+    letter-spacing: 6px;
+    width:700px;
+}
+
+.icons {
+    position: relative;
+    left:200px;
+    top:50px;
+    width:50px;
+}
+
+.icon {
+    width:40px;
+    height: 40px;
+    display: flex;
+    margin-bottom: 50px;
+
+}
+
+.cont-word p {
+    font-family: 'Cagliostro', sans-serif;
+    font-size:30px;
+    margin-top:60px;
+    margin-left: 200px;
+    width:400px;
+}
+
+.small-1 {
+    position: relative;
+    left:300px;
+    top:-220px;
+    width:200px;
+}
+
+.small-1 p {
+    margin-bottom: 70px;
+}
+
+.small-2 {
+
+    position: relative;
+    left:300px;
+    top: -460px;
+    width:200px;
+}
+
+.small-2 p {
+    margin-bottom: 70px;
+}
+
+.title {
+position: inherit;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 37.0416px;
+line-height: 45px;
+margin: 0 auto;
+margin-top:20px;
+color: #FFDC26;
+text-align: center;
+display: block;
+
+}
+
+.contact-us {
+    position: relative;
+    margin-top: 2000px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 570px;
+    margin-top:-860px;
+    margin-left:760px;
+}
+
+label {
+    margin-top: 10px;
+    font-weight: 700;
+    color: #6F4E37;
+}
+
+input, button {
+    margin-top: 5px;
+    padding: 15px;
+    width:250px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    margin-bottom: 10px;
+}
+
+textarea {
+    margin-top: 5px;
+    padding: 25px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    margin-bottom: 10px;
+}
+
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    background-color: transparent;
+    border-color: #6F4E37;
+    color: #6F4E37;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #53392A;
+}
+</style>
+<body>
+<section class="one">
+
+    <header>
+        <nav>
+            <ul>Home</ul>
+            <ul><a href="#two">About</a></ul>
+            <ul>Services</ul>
+            <ul>Contact</ul>
+            <ul id="login">Login</ul>
+            <a href="/petConservations/allpetconservations">View Pet Conservations</a>
+            <a href="/all">View All Pets</a>
+            <a href="/login">Login</a>
+            <a href="/Dashboard">Dashboard</a>
+        </nav>
+    </header>
+
+
+    <div class="brand">
+        <p class="name">Pet</p>
+        <p class="name" id="name1">Guardians</p>
+    </div>
+    <img class="home-image" src="image 2.png">
+    <div class="ellipse1"></div>
+
+    <div class="box">
+        <p class="box-words">Pet Adoption</p>
+    </div>
+
+    <div class="box2">
+        <p class="box-words">Pet Conservation</p>
+    </div>
+
+    <div class="main-words">
+
+        <p>Pet Guardians &<br>
+            Wild Hearts</p>
+    </div>
+
+    <div class="min-words">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin<br>
+        mollis sed viverra posuere malesuada. At et pharetra diam vel.<br>
+        Quis dignissim maecenas lectus vestibulum, sed. Risus est <br>
+        accumsan euismod ut at consequat.</div>
+
+    <img class="stars" src="image 10 (Traced).png" >
+
+</section>
+
+<section id="two">
+    <img class="about-img" src="image 11.png">
+
+    <img class="stars2" src="image 10 (Traced).png" >
+
+    <div class="about">
+        <p class="abt-name">Pet</p>
+        <p class="abt-name" id="abt-name1">Guardians</p>
+    </div>
+
+
+    <p class="long-words"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris integer neque<br>
+        fermentum fermentum volutpat a sed cursus. Lorem sed urna sed gravida <br>aliquet.
+        Felis lectus id dignissim magna vehicula felis. Sociis suscipit et nunc,<br> etiam. Proin sit vitae amet nunc habitasse euismod. Elit vitae hendrerit mattis<br> sit urna sit fermentum lorem. Sed magna nunc ultrices at in a, est. In metus<br> lectus cursus interdum elementum. A metus adipiscing odio proin enim amet<br> semper. Ultrices eget adipiscing quam sed nunc, aliquet eget vitae. Id nunc<br> tortor natoque vel eget augue laoreet. Id quisque sit gravida facilisis massa, vel<br> non nisl. Nullam cursus massa enim mi arcu a blandit.<br>
+        Pellentesque phasellus tempor et felis.
+    </p>
+</section>
+
+<section class="three">
+    <p class="service">Our Services</p>
+    <div class="ellipse2">
+        <p class="ellipse21"><img src="icons8-pet-100.png"></p>
+        <p class="ellipse22"><img src="icons8-heart-with-dog-paw-100.png"></p>
+        <p class="ellipse23"><img src="icons8-cat-caregivers-100 (1).png"></p>
+
+    </div>
+    <div>
+        <div class="about-words">
+            <p>Pet Adoption</p>
+            <p>Pet Conservartion</p>
+            <p>Pet Training</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="four">
+    <p class="category">Pets Category</p>
+    <div class="ellipse3">
+        <p class="ellipse31">
+            <img src="pexels-charles-1851164-removebg-preview 1.png">
+            <a th:href="@{/alldogs}" class="abt-read">Read More</a>
+        </p>
+        <p class="ellipse32">
+            <img src="pexels-wojciech-kumpicki-2071882-removebg-preview 1.png">
+            <a th:href="@{/allcats}" class="abt-read">Read More</a>
+        </p>
+        <p class="ellipse33">
+            <img src="pexels-mati-mango-3820509-removebg-preview 1.png">
+            <a th:href="@{/allrabbits}" class="abt-read">Read More</a>
+        </p>
+    </div>
+
+    <div class="cat-words">
+        <p>DOGS</p>
+        <p>CATS</p>
+        <p>RABBITS</p>
+    </div>
+
+
+</section>
+
+<section class="five">
+    <p class="conservation">Pet Conservation</p>
+    <p class="cons-words">You want to know More about <br> Pet Conservation?, Dive in to<br> learn new things</p>
+    <img class="pet-cons" src="pexels-pixabay-220938-removebg-preview 2.png">
+    <a th:href="@{/petConservations/article}" class="abt-cons">Read More</a>
+</section>
+
+<section class="contact-us">
+    <p class="title">Our news & Promo</p>
+    <div class="cont-word">
+        <p>Contact Us,<br>It's easy</p>
+    </div>
+    <div class="icons">
+        <img class="icon" src="icon.png">
+        <img class="icon" src="icon (1).png">
+        <img class="icon" src="icon (2).png">
+    </div>
+
+    <div class="small-1">
+        <p>Call Today</p>
+        <p>Monday To Friday</p>
+        <p>Our office</p>
+    </div>
+
+    <div class="small-2">
+        <p>+250 780288536</p>
+        <p>9AM - 3PM</p>
+        <p>Pet Guardians Kimironko</p>
+    </div>
+
+
+    <form th:action="@{/send-email}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your Name"><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your Phone Number" required><br>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" placeholder="Enter your Message" required></textarea><br>
+
+        <button type="submit">Send Email</button>
+    </form>
+</section>
+
+</body>
+</html>

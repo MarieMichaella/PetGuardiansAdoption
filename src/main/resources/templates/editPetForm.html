@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
+<style>
+
+
+    body {
+        background-color:#f6f6f6;
+    }
+
+    .menu {
+        position:absolute;
+        top:0px;
+        left:0px;
+        width:250px;
+        height:800px;
+        background-color: white;
+    }
+
+    .brand {
+        display: flex;
+        margin-left:20px;
+        margin-top: -10px;
+    }
+
+    .name {
+    width: 263px;
+    height: 45px;
+    left: 0px;
+    top: 27.53px;
+    margin-right: -210px;
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+
+    }
+
+
+    #name1 {
+    color:#6F4E37;
+    }
+
+    nav {
+        top:120px;
+        position: absolute;
+        font-family: Mulish;
+        text-align: left;
+        left:100px;
+
+    }
+
+    nav p {
+        margin-bottom: 50px;
+        z-index:3;
+    }
+
+    .rect {
+        position: absolute;
+        top:200px;
+        left:-100px;
+        height:50px;
+        background-color: #f6f6f6;
+        width:250px;
+        border-radius: 20px;
+    }
+
+    .form {
+        position:absolute;
+        top:250px;
+        left:300px;
+        border-radius: 20px;
+        width:700px;
+        height:600px;
+        background-color: #fff;
+    }
+
+    .top-dash {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        width: 875px;
+        height: 120px;
+        left:290px;
+        top:50px;
+
+    }
+
+    .dash-1 {
+        flex: 1;
+        position: relative;
+        background: #F64E60;
+        border-radius: 20px;
+        margin-right:30px;
+    }
+
+    .ellipse1 {
+        position: absolute;
+        width: 110px;
+        height: 110px;
+        right: -17px;
+        top: -70px;
+        border-radius: 50%;
+        background-color: transparent;
+        border: 20px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .dash-2 {
+        flex: 1;
+        position: relative;
+        background: #6993ff;
+        border-radius: 20px;
+        margin-right:30px;
+    }
+
+    .ellipse2 {
+        position: absolute;
+        width: 110px;
+        height: 110px;
+        right: -17px;
+        top: -70px;
+        border-radius: 50%;
+        background-color: transparent;
+        border: 20px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .dash-3 {
+        flex: 1;
+        position: relative;
+        background: #1BC5BD;
+        border-radius: 20px;
+        margin-right:30px;
+    }
+
+    .ellipse3 {
+        position: absolute;
+        width: 110px;
+        height: 110px;
+        right: -17px;
+        top: -70px;
+        border-radius: 50%;
+        background-color: transparent;
+        border: 20px solid rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        max-width: 570px;
+        margin-top:20px;
+        margin-left:60px;
+    }
+
+    label {
+        margin-top: 10px;
+        font-weight: 700;
+        color: #6F4E37;
+    }
+
+    input, textarea, button {
+        margin-top: 5px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    button {
+        background-color: #6F4E37;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #53392A;
+    }
+</style>
+</head>
+<body>
+<div class="menu">
+    <div class="brand">
+        <p class="name">Pet</p>
+        <p class="name" id="name1">Guardians</p>
+    </div>
+
+    <nav>
+        <p>Add Pet</p>
+        <p><a th:href="@{/petConservations/allpetconservations}">Add Pet Article<a><p>
+        <p>Delete Pet</p>
+        <p>Pet List</p>
+        <div class="rect"></div>
+    </nav>
+</div>
+<div class="top-dash">
+    <div class="dash-1">
+        <p class="ellipse1"></p>
+    </div>
+
+    <div class="dash-2">
+        <p class="ellipse2"></p>
+    </div>
+
+    <div class="dash-3">
+        <p class="ellipse3"></p>
+    </div>
+</div>
+
+<section class="form">
+
+<form th:action="@{/edit/{id}(id=${pet.id})}" method="post" enctype="multipart/form-data">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" th:value="${pet.name}" required/>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required th:text="${pet.description}"></textarea>
+
+    <label for="breed">Breed:</label>
+    <input type="text" id="breed" name="breed" th:value="${pet.breed}" required/>
+
+    <label for="category">Category:</label>
+    <input type="text" id="category" name="category" th:value="${pet.category}" required/>
+
+    <label for="image">Image:</label>
+    <input type="file" id="image" name="image" accept="image/*"/>
+
+    <button type="submit">Save Changes</button>
+</form>
+
+</section>
+
+<a th:href="@{/petConservations//all}">Back to All Pets</a>
+
+</body>
+</html>

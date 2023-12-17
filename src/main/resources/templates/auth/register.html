@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+</head>
+<style>body {
+    background-color: #f6f6f6;
+}
+
+.login-box {
+    position: relative;
+    margin: 0 auto;
+    top:100px;
+    width:1000px;
+    height: 600px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rect-1 {
+    position: inherit;
+    width:500px;
+    height:600px;
+    background-color: #f6f6f6;
+    border-radius: 20px 0 0 20px;
+}
+
+.rect-1 img {
+    position: absolute;
+    left:70px;
+    top:50px;
+    width:350px;
+    height: 500px;
+}
+
+.rect-1 h1{
+    position: inherit;
+    font-family: 'Montserrat';
+    font-size: 50px;
+    text-align: center;
+    top: 50px;
+}
+
+.login-inputs {
+    position: relative;
+    top:-440px;
+    left:530px;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    margin-top:-50px;
+    margin-left:60px;
+}
+
+label {
+    margin-top: 10px;
+    font-weight: 700;
+    color: #6F4E37;
+}
+
+input, textarea {
+    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+input{
+    margin-top: 5px;
+    padding: 10px;
+    background-color: #f6f6f6;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+button{
+    margin-top: 5px;
+    padding: 10px;
+    margin: 0 auto;
+    width:100px;
+    background-color: #f6f6f6;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    background-color: #6F4E37;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #53392A;
+}</style>
+<body>
+<section class="login">
+    <div class="login-box">
+        <div class="rect-1">
+            <h1>Welcome!</h1>
+            <img th:src="@{/image%202.png}">
+            <img th:src="@{/image%202.png}">
+        </div>
+
+        <div class="login-inputs">
+            <p th:if="${error}" style="color: red;">Error: ${error}</p>
+
+    <form th:action="@{/register}" th:object="${user}" method="post" class="form">
+        <!--        <h3>Registration</h3>-->
+        <span th:utext="${successMessage}"></span>
+        <div th:if="${bindingResult!=null && bindingResult.getAllErrors()!=null}">
+            <ul th:each="data : ${bindingResult.getAllErrors()}">
+                <li th:text="${data.getObjectName() + ' :: ' + data.getDefaultMessage()}"></li>
+            </ul>
+        </div>
+        <div class="div1">
+        <label
+                for="chk" aria-hidden="true" style="color:darkslateblue">Register</label>
+            <br>
+            <br>
+        <input class="input" type="text" th:field="*{firstName}" placeholder="First Name" style="float: left; display: block;" /> <br/><br/>
+        <input class="input" type="text" th:field="*{lastName}" placeholder="Last Name" style="float: left;display: block;
+        width: 50%;" /> <br/><br/>
+        <input class="input" type="text" th:field="*{mobile}" placeholder="Mobile Number" style="float: left;display: block;
+        width: 50%;" /> <br/><br/>
+        </div>
+    <div class="div2">
+        <input class="input" type="text" th:field="*{email}" placeholder="Email" style="float: right;display: block;
+        width: 50%;"/> <br/><br/>
+        <input class="input" type="password" th:field="*{password}" placeholder="Password" style="float: right;display: block;
+        width: 50%;"/> <br/><br/>
+        <select class="input" th:field="*{role}"  style="float: right;display: block;
+        width: 50%;" required>
+            <option value="">Select</option>
+            <option value="ADMIN">ADMIN</option>
+            <option value="USER">USER</option>
+        </select> <br/><br/>
+    </div>
+        <button type="submit">Register</button>
+        <button><a th:href="@{|/login|}" th:text="'Log in'" style="color: white"></a></button>
+
+
+    </form>
+</div>
+</div>
+</section>
+</body>
+</html>

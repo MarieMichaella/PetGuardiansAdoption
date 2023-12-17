@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pet Conservations List</title>
+    <style>
+        .pet-cons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    margin-top:-200px;
+}
+
+
+        .pet-card {
+            position: relative;
+            margin:0 auto;
+            width: 30%;
+            margin: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: center;
+            max-width: 336px;
+            height: 310px;
+                background: #FFFFFF;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+        }
+
+        .pet-img {
+            margin: 0 auto;
+            width: 100%;
+            height: 100%;
+            max-width: 200px;
+            max-height: 150px;
+        }
+
+                .pet-card p {
+            position: inherit;
+            display: flex;
+            top:50px;
+        }
+
+        .pet-card a {
+            position: inherit;
+                margin-left: 180px;
+                top:0px;
+                padding: 8px 12px;
+                border: 3px solid #6F4E37;
+                background-color: transparent;
+                border-radius: 8px;
+                cursor: pointer;
+                color:#6F4E37;
+                text-decoration: none;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Pet Conservations List</h1>
+
+<section class="pet-conservation">
+    <div class="pet-cons-container">
+        <div th:each="petConservation : ${petConservations}" class="pet-card">
+            <img class="pet-img" th:src="@{/display/{id}(id=${petConservation.id})}" alt="Pet Image"/>
+            <div>
+                <p>ID: <span th:text="${petConservation.id}"></span></p>
+                <p>Name: <span th:text="${petConservation.blogName}"></span></p>
+                <p>Description: <span th:text="${petConservation.blogDescription}"></span></p>
+            </div>
+            <div class="actions">
+                <a class="details" th:href="@{'/petConservations/details/' + ${petConservation.id}}">Details</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

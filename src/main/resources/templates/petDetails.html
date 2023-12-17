@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pet Details</title>
+</head>
+<body>
+
+<h2>Pet Details</h2>
+
+<p><strong>ID:</strong> <span th:text="${pet.id}"></span></p>
+<p><strong>Name:</strong> <span th:text="${pet.name}"></span></p>
+<p><strong>Description:</strong> <span th:text="${pet.description}"></span></p>
+<p><strong>Breed:</strong> <span th:text="${pet.breed}"></span></p>
+<p><strong>Category:</strong> <span th:text="${pet.category}"></span></p>
+
+<img th:src="@{/display/{id}(id=${pet.id})}" alt="Pet Image"/>
+
+<br/>
+<a th:href="@{/allPets}">Back to All Pets</a>
+<a th:href="@{/adoption-form/{name}(name=${pet.name})}">Interested in adopting? Click here</a>
+
+</body>
+</html>

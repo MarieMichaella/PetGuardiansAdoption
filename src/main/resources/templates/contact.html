@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Form</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cagliostro:wght@700&display=swap">
+</head>
+<style>
+    .icons {
+        position: relative;
+        left:200px;
+        top:50px;
+        width:50px;
+    }
+
+    .icon {
+        width:40px;
+        height: 40px;
+        display: flex;
+        margin-bottom: 50px;
+
+    }
+
+    .cont-word p {
+        font-family: 'Cagliostro', sans-serif;
+        font-size:30px;
+        margin-top:60px;
+        margin-left: 200px;
+        width:400px;
+    }
+
+    .small-1 {
+        position: relative;
+        left:300px;
+        top:-220px;
+        width:200px;
+    }
+
+    .small-1 p {
+        margin-bottom: 70px;
+    }
+
+    .small-2 {
+
+        position: relative;
+        left:300px;
+        top: -460px;
+        width:200px;
+    }
+
+    .small-2 p {
+        margin-bottom: 70px;
+    }
+
+    .title {
+position: inherit;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 37.0416px;
+line-height: 45px;
+margin: 0 auto;
+margin-top:20px;
+color: #FFDC26;
+text-align: center;
+display: block;
+
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        max-width: 570px;
+        margin-top:-860px;
+        margin-left:760px;
+    }
+
+    label {
+        margin-top: 10px;
+        font-weight: 700;
+        color: #6F4E37;
+    }
+
+    input, button {
+        margin-top: 5px;
+        padding: 15px;
+        width:250px;
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        margin-bottom: 10px;
+    }
+
+    textarea {
+        margin-top: 5px;
+        padding: 25px;
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        margin-bottom: 10px;
+    }
+
+
+    textarea {
+        resize: vertical;
+    }
+
+    button {
+        background-color: transparent;
+        border-color: #6F4E37;
+        color: #6F4E37;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #53392A;
+    }
+
+</style>
+<body>
+
+<section class="contact-us">
+    <p class="title">Our news & Promo</p>
+    <div class="cont-word">
+        <p>Contact Us,<br>It's easy</p>
+    </div>
+    <div class="icons">
+        <img class="icon" src="icon.png">
+        <img class="icon" src="icon (1).png">
+        <img class="icon" src="icon (2).png">
+    </div>
+
+    <div class="small-1">
+        <p>Call Today</p>
+        <p>Monday To Friday</p>
+        <p>Our office</p>
+    </div>
+
+    <div class="small-2">
+        <p>+250 780288536</p>
+        <p>9AM - 3PM</p>
+        <p>Pet Guardians Kimironko</p>
+    </div>
+
+
+<form th:action="@{/send-email}" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" placeholder="Enter your Name"><br>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" placeholder="Enter your Phone Number" required><br>
+
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" rows="4" placeholder="Enter your Message" required></textarea><br>
+
+    <button type="submit">Send Email</button>
+</form>
+</section>
+
+</body>
+</html>
