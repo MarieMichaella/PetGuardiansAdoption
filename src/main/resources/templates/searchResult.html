@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pet Search Result</title>
+</head>
+<body>
+
+<h2>Search Result</h2>
+
+<th:block th:if="${pet != null}">
+    <h3>Pet Details</h3>
+    <ul>
+        <li>ID: <span th:text="${pet.id}"></span></li>
+        <li>Name: <span th:text="${pet.name}"></span></li>
+        <li>Description: <span th:text="${pet.description}"></span></li>
+        <li>Breed: <span th:text="${pet.breed}"></span></li>
+        <!-- Add other details as needed -->
+    </ul>
+</th:block>
+
+<!-- Check if there is an error message to display -->
+<th:block th:if="${error != null}">
+    <p th:text="${error}"></p>
+</th:block>
+
+
+</body>
+</html>
