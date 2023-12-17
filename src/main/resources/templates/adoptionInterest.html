@@ -56,18 +56,58 @@
 
 <h1>Adoption Interest Form</h1>
 
-<form th:action="@{/send-interest}" method="post" th:object="${adoptionInterest}">
+<form th:action="@{/send-interest}" method="post" th:object="${adoptionInterest}" onsubmit="return validateForm()">
     <label for="name">Pet Name:</label>
-    <input type="text" id="name" th:field="*{name}" required/><br/>
+    <input type="text" id="name" th:field="*{name}" required/>
+    <span id="nameError" class="error"></span><br/>
 
     <label for="phoneNumber">Phone Number:</label>
-    <input type="text" id="phoneNumber" name="phoneNumber" required/><br/>
+    <input type="text" id="phoneNumber" name="phoneNumber" required/>
+    <span id="phoneNumberError" class="error"></span><br/>
 
     <label for="message">Message:</label>
-    <textarea id="message" name="message" rows="4" required></textarea><br/>
+    <textarea id="message" name="message" rows="4" required></textarea>
+    <span id="messageError" class="error"></span><br/>
 
     <input type="submit" value="Send Interest"/>
 </form>
+
+<script>
+    function validateForm() {
+        // Reset error messages
+        document.getElementById('nameError').innerText = '';
+        document.getElementById('phoneNumberError').innerText = '';
+        document.getElementById('messageError').innerText = '';
+
+        // Get form values
+        var name = document.querySelector('[id="name"]').value;
+        var phoneNumber = document.querySelector('[id="phoneNumber"]').value;
+        var message = document.querySelector('[id="message"]').value;
+
+        // Perform validation
+        if (name.trim() === '') {
+            document.getElementById('nameError').innerText = 'Pet Name is required';
+            return false;
+        }
+
+        if (phoneNumber.trim() === '') {
+            document.getElementById('phoneNumberError').innerText = 'Phone Number is required';
+            return false;
+        } else if (!/^\d{10}$/.test(phoneNumber.trim())) {
+            document.getElementById('phoneNumberError').innerText = 'Phone Number must be 10 digits';
+            return false;
+        }
+
+        if (message.trim() === '') {
+            document.getElementById('messageError').innerText = 'Message is required';
+            return false;
+        }
+
+        // Form is valid, allow submission
+        return true;
+    }
+</script>
+
 
 </body>
 

@@ -76,7 +76,7 @@
 
     .form {
         position:absolute;
-        top:250px;
+        top:50px;
         left:300px;
         border-radius: 20px;
         width:700px;
@@ -188,6 +188,11 @@
     button:hover {
         background-color: #53392A;
     }
+
+    a {
+    text-decoration: none;
+    color:inherit;
+    }
 </style>
 </head>
 <body>
@@ -198,53 +203,96 @@
     </div>
 
     <nav>
-        <p>Add Pet</p>
-        <p><a th:href="@{/petConservations/allpetconservations}">Add Pet Article<a><p>
-        <p>Delete Pet</p>
-        <p>Pet List</p>
-        <div class="rect"></div>
+        <p><a th:href="@{/add}">Add Pet</a></p>
+        <p><a th:href="@{/petConservations/allpetconservations}">View Pet Article<p>
+            <p><a th:href="@{/petConservations/addpetconservation}">Add Pet Article</a></p>
+            <p><a th:href="@{/home}">User Page</a></p>
     </nav>
-</div>
-<div class="top-dash">
-    <div class="dash-1">
-        <p class="ellipse1"></p>
-    </div>
 
-    <div class="dash-2">
-        <p class="ellipse2"></p>
-    </div>
-
-    <div class="dash-3">
-        <p class="ellipse3"></p>
-    </div>
 </div>
+
 
 <section class="form">
 
-    <form th:action="@{/add}" method="post" enctype="multipart/form-data">
+    <form id="addPetForm" action="/add" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required/>
+        <input type="text" id="name" name="name">
+        <span id="nameError" class="error"></span>
+
+        <br>
 
         <label for="description">Description:</label>
-        <textarea id="description" name="description" required></textarea>
+        <textarea id="description" name="description"></textarea>
+        <span id="descriptionError" class="error"></span>
+
+        <br>
 
         <label for="breed">Breed:</label>
-        <input type="text" id="breed" name="breed" required/>
+        <input type="text" id="breed" name="breed">
+        <span id="breedError" class="error"></span>
+
+        <br>
 
         <label for="category">Category:</label>
-        <select id="category" name="category" required>
+        <select id="category" name="category">
             <option value="DOGS">Dogs</option>
             <option value="CATS">Cats</option>
             <option value="RABBITS">Rabbits</option>
             <option value="OTHER">Other</option>
         </select>
 
+        <br>
+
         <label for="image">Image:</label>
-        <input type="file" id="image" name="image" accept="image/*" required/>
+        <input type="file" id="image" name="image" accept="image/*">
+        <span id="imageError" class="error"></span>
+
+        <br>
 
         <button type="submit">Add Pet</button>
     </form>
+
 </section>
+
+<script>
+    function validateForm() {
+        // Reset error messages
+        document.getElementById('nameError').innerText = '';
+        document.getElementById('descriptionError').innerText = '';
+        document.getElementById('breedError').innerText = '';
+        document.getElementById('imageError').innerText = '';
+
+        // Get form values
+        var name = document.getElementById('name').value;
+        var description = document.getElementById('description').value;
+        var breed = document.getElementById('breed').value;
+        var image = document.getElementById('image').value;
+
+        // Perform validation
+        if (name.trim() === '') {
+            document.getElementById('nameError').innerText = 'Name is required';
+            return false;
+        }
+
+        if (description.trim() === '') {
+            document.getElementById('descriptionError').innerText = 'Description is required';
+            return false;
+        }
+
+        if (breed.trim() === '') {
+            document.getElementById('breedError').innerText = 'Breed is required';
+            return false;
+        }
+
+        if (image.trim() === '') {
+            document.getElementById('imageError').innerText = 'Image is required';
+            return false;
+        }
+
+        // Form is valid, allow submission
+        return true;
+    }
+</script>
 <a th:href="@{/petConservations/all}">Back to All Pets</a>
 </body>
 </html>

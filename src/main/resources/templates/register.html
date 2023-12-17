@@ -108,15 +108,13 @@ button:hover {
     <div class="login-box">
         <div class="rect-1">
             <h1>Welcome!</h1>
-            <img th:src="@{/image%202.png}">
-            <img th:src="@{/image%202.png}">
+<!--            <img th:src="@{/image%202.png}">-->
         </div>
 
         <div class="login-inputs">
             <p th:if="${error}" style="color: red;">Error: ${error}</p>
 
-            <form th:action="@{/register}" th:object="${user}" method="post" class="form">
-                <!--        <h3>Registration</h3>-->
+            <form th:action="@{/register}" th:object="${user}" method="post" class="form" onsubmit="return validateRegistrationForm()">
                 <span th:utext="${successMessage}"></span>
                 <div th:if="${bindingResult!=null && bindingResult.getAllErrors()!=null}">
                     <ul th:each="data : ${bindingResult.getAllErrors()}">
@@ -124,23 +122,17 @@ button:hover {
                     </ul>
                 </div>
                 <div class="div1">
-                    <label
-                            for="chk" aria-hidden="true" style="color:darkslateblue">Register</label>
+                    <label for="chk" aria-hidden="true" style="color: darkslateblue">Register</label>
                     <br>
                     <br>
-                    <input class="input" type="text" th:field="*{firstName}" placeholder="First Name" style="float: left; display: block;" /> <br/><br/>
-                    <input class="input" type="text" th:field="*{lastName}" placeholder="Last Name" style="float: left;display: block;
-        width: 50%;" /> <br/><br/>
-                    <input class="input" type="text" th:field="*{mobile}" placeholder="Mobile Number" style="float: left;display: block;
-        width: 50%;" /> <br/><br/>
+                    <input class="input" type="text" th:field="*{firstName}" id="firstName" placeholder="First Name" style="float: left; display: block;" /> <br/><br/>
+                    <input class="input" type="text" th:field="*{lastName}" id="lastName" placeholder="Last Name" style="float: left;display: block; width: 50%;" /> <br/><br/>
+                    <input class="input" type="text" th:field="*{mobile}" id="mobile" placeholder="Mobile Number" style="float: left;display: block; width: 50%;" /> <br/><br/>
                 </div>
                 <div class="div2">
-                    <input class="input" type="text" th:field="*{email}" placeholder="Email" style="float: right;display: block;
-        width: 50%;"/> <br/><br/>
-                    <input class="input" type="password" th:field="*{password}" placeholder="Password" style="float: right;display: block;
-        width: 50%;"/> <br/><br/>
-                    <select class="input" th:field="*{role}"  style="float: right;display: block;
-        width: 50%;" required>
+                    <input class="input" type="text" th:field="*{email}" id="email" placeholder="Email" style="float: right;display: block; width: 50%;"/> <br/><br/>
+                    <input class="input" type="password" th:field="*{password}" id="password" placeholder="Password" style="float: right;display: block; width: 50%;"/> <br/><br/>
+                    <select class="input" th:field="*{role}" id="role" style="float: right;display: block; width: 50%;" >
                         <option value="">Select</option>
                         <option value="ADMIN">ADMIN</option>
                         <option value="USER">USER</option>
@@ -148,11 +140,63 @@ button:hover {
                 </div>
                 <button type="submit">Register</button>
                 <button><a th:href="@{|/login|}" th:text="'Log in'" style="color: white"></a></button>
-
-
             </form>
         </div>
     </div>
 </section>
+
+<script>
+    function validateRegistrationForm() {
+        // Reset error messages
+        document.getElementById('firstNameError').innerText = '';
+        document.getElementById('lastNameError').innerText = '';
+        document.getElementById('mobileError').innerText = '';
+        document.getElementById('emailError').innerText = '';
+        document.getElementById('passwordError').innerText = '';
+        document.getElementById('roleError').innerText = '';
+
+        // Get form values
+        var firstName = document.getElementById('firstName').value;
+        var lastName = document.getElementById('lastName').value;
+        var mobile = document.getElementById('mobile').value;
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        var role = document.getElementById('role').value;
+
+        // Perform validation
+        if (firstName.trim() === '') {
+            document.getElementById('firstNameError').innerText = 'First Name is required';
+            return false;
+        }
+
+        if (lastName.trim() === '') {
+            document.getElementById('lastNameError').innerText = 'Last Name is required';
+            return false;
+        }
+
+        if (mobile.trim() === '') {
+            document.getElementById('mobileError').innerText = 'Mobile Number is required';
+            return false;
+        }
+
+        if (email.trim() === '') {
+            document.getElementById('emailError').innerText = 'Email is required';
+            return false;
+        }
+
+        if (password.trim() === '') {
+            document.getElementById('passwordError').innerText = 'Password is required';
+            return false;
+        }
+
+        if (role.trim() === '') {
+            document.getElementById('roleError').innerText = 'Role is required';
+            return false;
+        }
+
+        // Form is valid, allow submission
+        return true;
+    }
+</script>
 </body>
 </html>

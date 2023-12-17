@@ -3,9 +3,11 @@ package com.pet.pet.controller;
 import com.pet.pet.model.Pet;
 import com.pet.pet.model.PetConservation;
 import com.pet.pet.service.PetService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -88,20 +90,20 @@ public class PetController {
     }
 
     @GetMapping("/all")
-    public ModelAndView viewAllPets(@RequestParam(defaultValue = "0") int page,
-                                    @RequestParam(defaultValue = "4") int size) {
-        ModelAndView mv = new ModelAndView("allPets");
+    public String viewAllPets(@RequestParam(name = "page", defaultValue = "0") int currentPage,
+                              @RequestParam(name = "size", defaultValue = "2") int size, Model model) {
+        Page<Pet> petPage = petService.getAllPets(PageRequest.of(currentPage, size));
 
-        PageRequest pageable = PageRequest.of(page, size);
+        model.addAttribute("pets", petPage.getContent());
+        model.addAttribute("currentPagePets", currentPage);
+        model.addAttribute("totalPagePets", petPage.getTotalPages());
+        model.addAttribute("totalItemPets", petPage.getTotalElements());
 
-        Page<Pet> petPage = petService.getAllPets(pageable);
-
-        mv.addObject("pets", petPage.getContent());
-        mv.addObject("currentPage", page);
-        mv.addObject("totalPages", petPage.getTotalPages());
-
-        return mv;
+        return "allPets";
     }
+
+
+
 
     @GetMapping("/add")
     public ModelAndView showAddPetForm() {
@@ -109,7 +111,7 @@ public class PetController {
     }
 
     @PostMapping("/add")
-    public String addPetPost(@RequestParam("image") MultipartFile file, @ModelAttribute Pet pet) throws IOException, SQLException {
+    public String addPetPost(@Valid @RequestParam("image") MultipartFile file, @ModelAttribute Pet pet) throws IOException, SQLException {
         byte[] bytes = file.getBytes();
         Blob blob = new SerialBlob(bytes);
 
@@ -127,7 +129,7 @@ public class PetController {
     }
 
     @PostMapping("/edit/{id}")
-    public String editPetPost(@PathVariable Long id, @RequestParam("image") MultipartFile file, @ModelAttribute Pet updatedPet) throws IOException, SQLException {
+    public String editPetPost(@Valid @PathVariable Long id, @RequestParam("image") MultipartFile file, @ModelAttribute Pet updatedPet) throws IOException, SQLException {
         Pet existingPet = petService.getPetById(id);
         if (existingPet != null) {
             byte[] bytes = file.getBytes();
@@ -156,4 +158,6 @@ public class PetController {
         mv.addObject("pet", pet);
         return mv;
     }
+
+
 }

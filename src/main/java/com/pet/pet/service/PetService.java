@@ -2,6 +2,7 @@ package com.pet.pet.service;
 
 import com.pet.pet.model.Pet;
 import com.pet.pet.repository.PetRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -24,4 +25,15 @@ public interface PetService {
     Page<Pet> getCats(Pageable pageable);
 
     Page<Pet> getRabbits(Pageable pageable);
+
+
+
+    public Pet findPetById(Long id);
+
+    Page<Pet> searchPetsByName(String name, Pageable pageable);
+
+    List<Pet> findPetsByName(String name);
+
+
+
 }

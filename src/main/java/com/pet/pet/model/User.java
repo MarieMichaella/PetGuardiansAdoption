@@ -28,7 +28,7 @@ public class User implements UserDetails {
             strategy = GenerationType.SEQUENCE,
             generator = "users_sequence"
     )
-    private int id;
+    private Long id;
 
     @NotNull(message = "First Name cannot be empty")
     @Column(name = "first_name")
@@ -131,11 +131,11 @@ public class User implements UserDetails {
 
     public void setLastName(String lastName) { this.lastName = lastName; }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

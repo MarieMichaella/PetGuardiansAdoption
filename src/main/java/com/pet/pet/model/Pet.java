@@ -1,5 +1,7 @@
 package com.pet.pet.model;
 
+import jakarta.validation.constraints.*;
+
 import javax.persistence.*;
 import java.sql.Blob;
 
@@ -9,15 +11,26 @@ public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String description;
-    private String breed;
-    @Lob
-    private Blob pictureUrl;
 
+    @NotBlank(message = "Name cannot be empty")
+    @Size(max = 255, message = "Name cannot exceed 255 characters")
+    private String name;
+
+    @NotBlank(message = "Description cannot be empty")
+    @Size(max = 1000, message = "Description cannot exceed 1000 characters")
+    private String description;
+
+    @NotBlank(message = "Breed cannot be empty")
+    @Size(max = 255, message = "Breed cannot exceed 255 characters")
+    private String breed;
+
+    @Lob
+    @NotNull(message = "Picture cannot be empty")
+    private Blob pictureUrl;
 
     @Enumerated(EnumType.STRING)
     private PetCategory category;
+
 
     public Pet() {
     }

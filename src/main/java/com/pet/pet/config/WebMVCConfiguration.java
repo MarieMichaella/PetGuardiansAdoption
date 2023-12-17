@@ -9,7 +9,7 @@ public class WebMVCConfiguration implements WebMvcConfigurer {
 @Override
     public void addViewControllers(ViewControllerRegistry registry)  {
         registry.addViewController("/access-denied").setViewName("access-denied");
-        registry.addViewController("/").setViewName("homepage");
+        registry.addViewController("/").setViewName("login");
         registry.addViewController("/about-us").setViewName("about-us");
     }
 }

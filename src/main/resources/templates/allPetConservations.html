@@ -161,7 +161,7 @@ nav p {
 
     .pet-conservation {
         position:absolute;
-        top:250px;
+        top:50px;
         left:300px;
         border-radius: 20px;
         width:800px;
@@ -241,7 +241,25 @@ nav p {
         text-decoration: none;  /* Add this line to remove underline */
     display: inline-block;
     }
+    .icon {
+        position: relative;
+        top:37px;
+        left:-50px;
+      display: grid;
+      margin:0 auto;
+      width:50px;
 
+    }
+
+    .icon img {
+        margin-bottom: 41px;
+
+    }
+
+        a {
+    text-decoration: none;
+    color: inherit;
+    }
 </style>
 <body>
 <div class="menu">
@@ -251,32 +269,25 @@ nav p {
     </div>
 
     <nav>
-        <p>Add Pet</p>
-        <p><a th:href="@{/petConservations/allpetconservations}">Add Pet Article<a><p>
-            <p>Delete Pet</p>
-            <p>Pet List</p>
-            <div class="rect"></div>
-    </nav>
+        <p><a th:href="@{/add}">Add Pet</a></p>
+        <p><a th:href="@{/petConservations/allpetconservations}">View Pet Article<a><p>
+            <p><a th:href="@{/petConservations/addpetconservation}">Add Pet Article</a></p>
+            <p><a th:href="@{/home}">User Page</a></p>
+     </nav>
+
+<!--    <div class="icon">-->
+<!--        <img src="icons8-add-30.png">-->
+<!--        <img src="icons8-add-30.png">-->
+<!--        <img src="icons8-user-24.png">-->
+<!--    </div>-->
 </div>
 
-<div class="top-dash">
-    <div class="dash-1">
-        <p class="ellipse1"></p>
-    </div>
 
-    <div class="dash-2">
-        <p class="ellipse2"></p>
-    </div>
-
-    <div class="dash-3">
-        <p class="ellipse3"></p>
-    </div>
-</div>
 
 <section class="pet-conservation">
     <div class="pet-cons-container">
         <div th:each="petConservation : ${petConservations}" class="pet-card">
-            <img class="pet-img" th:src="@{/display/{id}(id=${petConservation.id})}" alt="Pet Image"/>
+            <img class="pet-img" th:src="@{'/display/' + ${petConservation.id}}" alt="Pet Image"/>
             <div class="pet-info">
                 <p>ID: <span th:text="${petConservation.id}"></span></p>
                 <p>Name: <span th:text="${petConservation.blogName}"></span></p>

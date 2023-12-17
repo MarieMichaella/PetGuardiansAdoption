@@ -1,5 +1,6 @@
 package com.pet.pet.controller;
 
+import com.pet.pet.model.Pet;
 import com.pet.pet.model.PetConservation;
 import com.pet.pet.service.PetConservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,7 +76,7 @@ public class PetConservationController {
 
         petConservation.setBlogPicture(blob);
         petConservationService.createPetConservation(petConservation);
-        return "redirect:/allpetconservations";
+        return "redirect:/allpetConservations";
     }
 
     // edit pet conservation - get
@@ -100,14 +101,14 @@ public class PetConservationController {
             existingPetConservation.setBlogDescription(updatedPetConservation.getBlogDescription());
             petConservationService.updatePetConservation(id, existingPetConservation);
         }
-        return "redirect:/allpetconservations";
+        return "redirect:/allpetConservations";
     }
 
     // delete pet conservation
     @GetMapping("/deletepetconservation/{id}")
     public String deletePetConservation(@PathVariable Long id) {
         petConservationService.deletePetConservation(id);
-        return "redirect:/allpetconservations";
+        return "redirect:/allpetConservations";
     }
 
     // Details page - get
@@ -118,5 +119,6 @@ public class PetConservationController {
         mv.addObject("petConservation", petConservation);
         return mv;
     }
+
 
 }

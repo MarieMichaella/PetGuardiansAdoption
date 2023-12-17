@@ -50,7 +50,9 @@ ul {
 }
 
 #login {
-    margin-top: -10px;
+    position: relative;
+    margin-top: -20px;
+    margin-left:-700px;
     width: 130px;
 height: 30px;
 padding-top: 10px;
@@ -616,11 +618,13 @@ button:hover {
             <ul><a href="#two">About</a></ul>
             <ul>Services</ul>
             <ul>Contact</ul>
-            <ul id="login">Login</ul>
-            <a href="/petConservations/allpetconservations">View Pet Conservations</a>
-            <a href="/all">View All Pets</a>
-            <a href="/login">Login</a>
-            <a href="/Dashboard">Dashboard</a>
+            <form th:action="@{/logout}" method="post" style="margin-top: 20px;">
+                <button type="submit" id="login">Logout</button>
+            </form>
+            <!--            <a href="/petConservations/allpetconservations">View Pet Conservations</a>-->
+            <!--            <a href="/all">View All Pets</a>-->
+            <!--            <a href="/login">Login</a>-->
+            <!--            <a href="/Dashboard">Dashboard</a>-->
         </nav>
     </header>
 
@@ -748,18 +752,57 @@ button:hover {
     </div>
 
 
-    <form th:action="@{/send-email}" method="post">
+    <form th:action="@{/send-email}" method="post" onsubmit="return validateForm()">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" placeholder="Enter your Name"><br>
+        <input type="text" id="name" name="name" placeholder="Enter your Name">
+        <span id="nameError" class="error"></span><br>
 
         <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone" placeholder="Enter your Phone Number" required><br>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your Phone Number">
+        <span id="phoneError" class="error"></span><br>
 
         <label for="message">Message:</label><br>
-        <textarea id="message" name="message" rows="4" placeholder="Enter your Message" required></textarea><br>
+        <textarea id="message" name="message" rows="4" placeholder="Enter your Message"></textarea>
+        <span id="messageError" class="error"></span><br>
 
         <button type="submit">Send Email</button>
     </form>
+
+    <script>
+        function validateForm() {
+            // Reset error messages
+            document.getElementById('nameError').innerText = '';
+            document.getElementById('phoneError').innerText = '';
+            document.getElementById('messageError').innerText = '';
+
+            // Get form values
+            var name = document.querySelector('[name="name"]').value;
+            var phone = document.querySelector('[name="phone"]').value;
+            var message = document.querySelector('[name="message"]').value;
+
+            // Perform validation
+            if (name.trim() === '') {
+                document.getElementById('nameError').innerText = 'Name is required';
+                return false;
+            }
+
+            if (phone.trim() === '') {
+                document.getElementById('phoneError').innerText = 'Phone Number is required';
+                return false;
+            } else if (!/^\d{10}$/.test(phone.trim())) {
+                document.getElementById('phoneError').innerText = 'Phone Number must be 10 digits';
+                return false;
+            }
+
+            if (message.trim() === '') {
+                document.getElementById('messageError').innerText = 'Message is required';
+                return false;
+            }
+
+            // Form is valid, allow submission
+            return true;
+        }
+    </script>
 </section>
 
 </body>

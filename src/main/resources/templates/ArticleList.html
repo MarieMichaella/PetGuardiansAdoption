@@ -67,9 +67,7 @@
         <div th:each="petConservation : ${petConservations}" class="pet-card">
             <img class="pet-img" th:src="@{/display/{id}(id=${petConservation.id})}" alt="Pet Image"/>
             <div>
-                <p>ID: <span th:text="${petConservation.id}"></span></p>
                 <p>Name: <span th:text="${petConservation.blogName}"></span></p>
-                <p>Description: <span th:text="${petConservation.blogDescription}"></span></p>
             </div>
             <div class="actions">
                 <a class="details" th:href="@{'/petConservations/details/' + ${petConservation.id}}">Details</a>

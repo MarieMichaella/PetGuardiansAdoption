@@ -1,5 +1,7 @@
 package com.pet.pet.model;
 
+import jakarta.validation.constraints.NotNull;
+
 import javax.persistence.*;
 import java.sql.Blob;
 
@@ -10,12 +12,16 @@ public class PetConservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+    @NotNull(message = "blog Name cannot be empty")
     private String blogName;
 
     @Lob
+    @NotNull(message = "Picture cannot be empty")
     private Blob blogPicture;
 
     @Lob
+    @NotNull(message = "Blog Description cannot be empty")
     private String blogDescription;
 
     public PetConservation() {

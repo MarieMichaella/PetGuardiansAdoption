@@ -38,6 +38,7 @@
     top:50px;
     width:350px;
     height: 500px;
+    background-image: url('/static/image 2.png');
 }
 
 .rect-1 h1{
@@ -113,24 +114,50 @@ button:hover {
 <section class="login">
     <div class="login-box">
         <div class="rect-1">
-
-            <img class="home-image" src="image 2.png">
-
+            <h1>Welcome!</h1>
+<!--            <img src="image 2.png" alt=""/>-->
         </div>
 
         <div class="login-inputs">
-            <form th:action="@{/login}" method="POST"  class="form">
+            <form action="/login" method="POST" class="form" onsubmit="return validateLoginForm()">
+                <label for="chk" aria-hidden="true" style="color: darkslateblue">Log in</label>
+                <input type="text" name="email" id="email" class="input" placeholder="Email"  />
+                <span id="emailError" class="error"></span><br /><br />
 
-                <!--    <h3 th:text="Login"></h3>-->
-                <label for="chk" aria-hidden="true" style="color:darkslateblue">Log in</label>
-                <input type="text" name="email" class="input" th:placeholder="Email" /> <br /><br />
-                <input type="password" th:placeholder="Password" class="input"  name="password" />
-                <button type="Submit" th:text="Login"></button>  <button><a th:href="@{|/register|}" th:text="'Register'" style="color: white; width: 30%"></a></button>
+                <input type="password" id="password" placeholder="Password" class="input" name="password"  />
+                <span id="passwordError" class="error"></span><br />
 
+                <button type="Submit">Login</button>
+                <button><a href="/register" style="color: white; width: 30%">Register</a></button>
             </form>
         </div>
     </div>
 </section>
 
+<script>
+    function validateLoginForm() {
+        // Reset error messages
+        document.getElementById('emailError').innerText = '';
+        document.getElementById('passwordError').innerText = '';
+
+        // Get form values
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+
+        // Perform validation
+        if (email.trim() === '') {
+            document.getElementById('emailError').innerText = 'Email is required';
+            return false;
+        }
+
+        if (password.trim() === '') {
+            document.getElementById('passwordError').innerText = 'Password is required';
+            return false;
+        }
+
+        // Form is valid, allow submission
+        return true;
+    }
+</script>
 </body>
 </html>

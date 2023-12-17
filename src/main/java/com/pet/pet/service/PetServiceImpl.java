@@ -5,8 +5,12 @@ import com.pet.pet.model.PetCategory;
 import com.pet.pet.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +20,7 @@ import java.util.stream.Collectors;
 public class PetServiceImpl implements PetService {
 
     private final PetRepository petRepository;
+
 
 
 
@@ -76,5 +81,20 @@ public class PetServiceImpl implements PetService {
         return petRepository.findByCategory(PetCategory.RABBITS, pageable);
     }
 
+
+
+    public Pet findPetById(Long id) {
+        return petRepository.findPetById(id);
+    }
+
+    @Override
+    public Page<Pet> searchPetsByName(String name, Pageable pageable) {
+        return petRepository.findByNameContainingIgnoreCase(name, pageable);
+    }
+
+    @Override
+    public List<Pet> findPetsByName(String name) {
+        return petRepository.findByNameContainingIgnoreCase(name);
+    }
 
 }

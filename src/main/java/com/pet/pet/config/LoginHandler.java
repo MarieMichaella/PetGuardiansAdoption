@@ -36,7 +36,7 @@ public class LoginHandler extends SimpleUrlAuthenticationSuccessHandler {
             roles.add(a.getAuthority());
         }
         if(roles.contains("ADMIN")){
-            url = "/admin/home";
+            url = "/all";
         }else if(roles.contains("USER")) {
             url = "/home";
         }

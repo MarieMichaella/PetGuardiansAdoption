@@ -3,21 +3,109 @@
 <head>
     <title>Pet Details</title>
 </head>
+<style>
+    .rect {
+        position:relative;
+        margin: 0 auto;
+        width:1000px;
+        height: 1000px;
+        background-color: #fff;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+    img {
+        position: absolute;
+        top:70px;
+        width:400px;
+        height: 500px;
+        left:260px;
+    }
+
+    .name {
+        position: absolute;
+        left: 740px;
+        width: 696px;
+height: 76px;
+top:70px;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 95.6%;
+letter-spacing: 6px;
+color: #272727;
+    }
+
+    .breed {
+        position: absolute;
+        left: 740px;
+        width: 696px;
+height: 76px;
+top:140px;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 95.6%;
+letter-spacing: 6px;
+color: #272727;
+    }
+
+    .cate {
+        position: absolute;
+        left: 740px;
+        width: 696px;
+height: 76px;
+top:210px;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 95.6%;
+letter-spacing: 6px;
+color: #272727;
+    }
+
+    .desc {
+        position: absolute;
+        top:650px;
+        left:300px;
+        font-size: 20px;
+        margin: 0 auto;
+        max-width: 800px;
+    }
+
+    .interested {
+        position: relative;
+        top:-600px;
+            margin-left: 700px;
+            padding: 8px 12px;
+            border: 3px solid #6F4E37;
+            background-color: transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            color:#6F4E37;
+            text-decoration: none;
+        display: inline-block;
+    }
+</style>
 <body>
 
 <h2>Pet Details</h2>
 
-<p><strong>ID:</strong> <span th:text="${pet.id}"></span></p>
-<p><strong>Name:</strong> <span th:text="${pet.name}"></span></p>
-<p><strong>Description:</strong> <span th:text="${pet.description}"></span></p>
-<p><strong>Breed:</strong> <span th:text="${pet.breed}"></span></p>
-<p><strong>Category:</strong> <span th:text="${pet.category}"></span></p>
+<div class="rect"></div>
+
+
+<p class="name"><strong>Name:</strong> <span th:text="${pet.name}"></span></p>
+<p class="desc"><strong>Description:</strong> <span th:text="${pet.description}"></span></p>
+<p class="breed"><strong>Breed:</strong> <span th:text="${pet.breed}"></span></p>
+<p class="cate"><strong>Category:</strong> <span th:text="${pet.category}"></span></p>
 
 <img th:src="@{/display/{id}(id=${pet.id})}" alt="Pet Image"/>
 
 <br/>
 <a th:href="@{/allPets}">Back to All Pets</a>
-<a th:href="@{/adoption-form/{name}(name=${pet.name})}">Interested in adopting? Click here</a>
+<a class="interested" th:href="@{/adoption-form/{name}(name=${pet.name})}">Interested in adopting? Click here</a>
 
 </body>
 </html>

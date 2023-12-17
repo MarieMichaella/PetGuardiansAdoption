@@ -11,4 +11,7 @@ public class HelloController {
         return "index";
     }
 
+    @RequestMapping("/dashboard")
+    public String dashboard() {return "allPets";}
+
 }
