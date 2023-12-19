@@ -608,6 +608,35 @@ button {
 button:hover {
     background-color: #53392A;
 }
+
+footer {
+    position: relative;
+    margin-left:-750px;
+    width:1500px;
+    height: 50px;
+    background-color: #6F4E37
+}
+
+footer p {
+text-align: center;
+color: white !important;
+}
+.log-form, body, html {
+    position: inherit;
+    left:150px;
+    margin: 0;
+    padding: 0;
+
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+/* Set a max-width for the form to prevent it from becoming too wide */
+.log-form {
+    max-width: 300px; /* Adjust the value as needed */
+}
 </style>
 <body>
 <section class="one">
@@ -618,7 +647,7 @@ button:hover {
             <ul><a href="#two">About</a></ul>
             <ul>Services</ul>
             <ul>Contact</ul>
-            <form th:action="@{/logout}" method="post" style="margin-top: 20px;">
+            <form class="log-form"th:action="@{/logout}" method="post" style="margin-top: 20px;">
                 <button type="submit" id="login">Logout</button>
             </form>
             <!--            <a href="/petConservations/allpetconservations">View Pet Conservations</a>-->
@@ -766,6 +795,10 @@ button:hover {
         <span id="messageError" class="error"></span><br>
 
         <button type="submit">Send Email</button>
+        <footer>
+            <p>2023 Copyright, Rugumbira Marie Michaella</p>
+        </footer>
+
     </form>
 
     <script>
